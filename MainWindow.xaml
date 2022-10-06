@@ -1,0 +1,27 @@
+﻿<Window x:Class="GameBrothersSafe.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GameBrothersSafe"
+        mc:Ignorable="d"
+        Title="Игра Братьев Пилотов" Height="600" Width="450">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="175*"/>
+            <RowDefinition Height="93*"/>
+            <RowDefinition Height="72*"/>
+            <RowDefinition Height="244*"/>
+        </Grid.RowDefinitions>
+        <Image HorizontalAlignment="Left" Height="100" Margin="175,40,175,0" VerticalAlignment="Top" Width="100" Source="Img/Start.jpg">
+            <Image.BindingGroup>
+                <BindingGroup/>
+            </Image.BindingGroup>
+        </Image>
+        <Label  Content="Игра Сейф Братьев Пилотов"  Margin="50,0,40,0" Grid.Row="1" VerticalAlignment="Center" FontSize="24" Height="34" Width="350" FontWeight="Bold" FontFamily="AR CENA"/>
+        <Label  Content="Выбор сложности" Margin="110,0,86,0" Grid.Row="2" VerticalAlignment="Center" FontSize="24" Height="34" FontWeight="Bold" FontFamily="AR CENA"/>
+        <Button Content="Легкий" HorizontalAlignment="Left" Margin="170,10,0,0" Grid.Row="3" VerticalAlignment="Top" Click="Easy_Button_Click" Width="110" Height="40" FontSize="14"/>
+        <Button Content="Средний" HorizontalAlignment="Left" Margin="170,80,0,0" Grid.Row="3" VerticalAlignment="Top" Click="Average_Button_Click" Width="110" Height="40" FontSize="14"/>
+        <Button Content="Сложный" HorizontalAlignment="Left" Margin="170,150,0,0" Grid.Row="3" VerticalAlignment="Top" Click="Difficult_Button_Click" Width="110" Height="40" FontSize="14"/>
+    </Grid>
+</Window>
