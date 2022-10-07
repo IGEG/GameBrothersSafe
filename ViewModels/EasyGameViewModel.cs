@@ -87,7 +87,7 @@ namespace GameBrothersSafe.ViewModels
                     var indexY = ListItems[i].IndexOf(ListItems[i][j]);
                     if (x == indexX || y == indexY)
                     {
-                        ListItems[i][j].Text = str;
+                        ListItems[i][j].Text = ChangeTextInButton(ListItems[i][j]);
                     }
 
                 }
