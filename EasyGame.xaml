@@ -5,8 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GameBrothersSafe"
         mc:Ignorable="d"
-        Title="EasyGame" Height="450" Width="800">
+        Title="EasyGame" Height="250" Width="250"
+        x:Name="easyGameWindow">
+    <Window.Resources>
+        <DataTemplate x:Key="DataTemplate_Level2">
+            <Button Content="{Binding Text}" Height="50" Width="50" Margin="4,4,4,4"
+                    Command="{Binding DataContext.ClickCommand, RelativeSource={RelativeSource AncestorType=Window, Mode=FindAncestor}}"
+                    CommandParameter="{Binding }">
+            </Button>
+        </DataTemplate>
+        <DataTemplate x:Key="DataTemplate_Level1">
+            <ItemsControl ItemsSource="{Binding}" ItemTemplate="{DynamicResource DataTemplate_Level2}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </DataTemplate>
+    </Window.Resources>
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <ItemsControl x:Name="lst" ItemTemplate="{DynamicResource DataTemplate_Level1}" 
+                      ItemsSource="{Binding ListItems}"/>
     </Grid>
 </Window>
