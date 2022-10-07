@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace GameBrothersSafe
 {
@@ -15,14 +16,19 @@ namespace GameBrothersSafe
             for (int x = 0; x < w; ++x)
             {
                 int h = matrix[x].Count; // height
+                
                 for (int y = 0; y < h; ++y)
                 {
                     if (matrix[x][y].Equals(value))
+                    {
                         return Tuple.Create(x, y);
+                    }
                 }
             }
 
             return Tuple.Create(-1, -1);
         }
+ 
+
     }
 }

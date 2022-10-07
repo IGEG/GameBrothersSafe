@@ -44,9 +44,16 @@ namespace GameBrothersSafe.ViewModels
         private void Click(ItemViewModel item)
         {
 
-           var str = item.Text;
-        
-
+            var str = item.Text;
+            if (str == "|")
+            {
+                str = "--";
+            }
+            else
+            {
+                str = "|";
+            }
+           item.Text = str;
            var tp = ListItems.CoordinatesOf<ItemViewModel>(item);
            var x = tp.Item1;
            var y = tp.Item2;
@@ -64,6 +71,21 @@ namespace GameBrothersSafe.ViewModels
                     }
                 }
             }
+        }
+
+        private static string ChangeTextInButton(ItemViewModel item)
+        {
+            var str = item.Text;
+            if (str == "|")
+            {
+                str = "--";
+            }
+            else
+            {
+                str = "|";
+            }
+            item.Text = str;
+            return str;
         }
 
 

@@ -22,21 +22,21 @@ namespace GameBrothersSafe.ViewModels
             set=>SetProperty(ref _text, value);
         }
 
-        public override int GetHashCode()
-        {
-            return Text.GetHashCode();
-        }
-        public override bool Equals(object? obj)
-        {
-            if (obj is ItemViewModel)
-            {
-                ItemViewModel item = (ItemViewModel)obj;
-                return item._text == _text;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        //public override int GetHashCode()
+        //{
+        //    return Text.GetHashCode();
+        //}
+        //public override bool Equals(object? obj)
+        //{
+        //    if (obj is ItemViewModel)
+        //    {
+        //        ItemViewModel item = (ItemViewModel)obj;
+        //        return item._text == _text;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
     }
 }
