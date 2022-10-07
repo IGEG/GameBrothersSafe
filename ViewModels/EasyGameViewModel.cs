@@ -15,25 +15,15 @@ namespace GameBrothersSafe.ViewModels
     {
         public EasyGameViewModel()
         {
-            
+            Capasity = 3;
             ListItems = new List<List<ItemViewModel>>();
-            var rand = new Random();
-            string[] handle = {"|","--" };
-        
-            for (int i = 0; i < 3; i++)
-            {
-                ListItems.Add(new List<ItemViewModel>());
+            LoadRandomItems(ListItems, Capasity);
 
-                for (int j = 0; j < 3; j++)
-                {
-                    int index = rand.Next(handle.Length);
-                    ListItems[i].Add(new ItemViewModel(handle[index]));
-                }
-            }
             OnPropertyChanged(nameof(ListItems));
             ClickCommand = new RelayCommand<ItemViewModel>(Click);
 
         }
+        public int Capasity { get; private set; }
 
         private List<List<ItemViewModel>> _listItems;
         public List<List<ItemViewModel>> ListItems { get=> _listItems; set=> SetProperty(ref _listItems, value);}
@@ -43,37 +33,35 @@ namespace GameBrothersSafe.ViewModels
 
         private void Click(ItemViewModel item)
         {
-
-            var str = item.Text;
-            if (str == "|")
-            {
-                str = "--";
-            }
-            else
-            {
-                str = "|";
-            }
-           item.Text = str;
+           var str = ChangeTextInButton(item);
            var tp = ListItems.CoordinatesOf<ItemViewModel>(item);
-           var x = tp.Item1;
-           var y = tp.Item2;
-            for (int i = 0; i < 3; i++)
-            {
-                var indexX = ListItems.IndexOf(ListItems[i]);
-
-                for (int j = 0; j < 3; j++)
-                {
-                    var indexY = ListItems[i].IndexOf(ListItems[i][j]);
-                    if (x == indexX || y == indexY)
-                    {
-                        
-                        ListItems[i][j].Text=str;
-                    }
-                }
-            }
+           ChangeTextInAllButton(tp.Item1, tp.Item2, Capasity, str);
+           var check = CheckFinish(item, Capasity, ListItems);
+           if (check)
+           {
+                MessageBox.Show("finish");
+           }
         }
 
-        private static string ChangeTextInButton(ItemViewModel item)
+        private void LoadRandomItems(List<List<ItemViewModel>> items, int num)
+        {
+            var rand = new Random();
+            string[] handle = { "|", "--" };
+
+            for (int i = 0; i < num; i++)
+            {
+                items.Add(new List<ItemViewModel>());
+
+                for (int j = 0; j < num; j++)
+                {
+                    int index = rand.Next(handle.Length);
+                    items[i].Add(new ItemViewModel(handle[index]));
+                }
+            }
+
+        }
+
+        private string ChangeTextInButton(ItemViewModel item)
         {
             var str = item.Text;
             if (str == "|")
@@ -87,6 +75,45 @@ namespace GameBrothersSafe.ViewModels
             item.Text = str;
             return str;
         }
+        private void ChangeTextInAllButton(int x, int y, int Capasity, string str )
+        {
+
+            for (int i = 0; i < Capasity; i++)
+            {
+                var indexX = ListItems.IndexOf(ListItems[i]);
+
+                for (int j = 0; j < Capasity; j++)
+                {
+                    var indexY = ListItems[i].IndexOf(ListItems[i][j]);
+                    if (x == indexX || y == indexY)
+                    {
+                        ListItems[i][j].Text = str;
+                    }
+
+                }
+            }
+
+        }
+
+        private bool CheckFinish(ItemViewModel item,int Capasity, List<List<ItemViewModel>> ListItems)
+        {
+            string str = item.Text;
+
+            for (int i = 0; i < Capasity; i++)
+            {
+                for (int j = 0; j < Capasity; j++)
+                {
+                    if (str != ListItems[i][j].Text)
+                        return false;
+                    else continue;
+                   
+                }
+
+            }
+            return true;
+
+        }
+
 
 
     }
