@@ -3,8 +3,10 @@ using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace GameBrothersSafe.ViewModels
@@ -41,9 +43,30 @@ namespace GameBrothersSafe.ViewModels
 
         private void Click(ItemViewModel item)
         {
-            ListItems[0][0].Text = "555";
 
+           var str = item.Text;
+        
+
+           var tp = ListItems.CoordinatesOf<ItemViewModel>(item);
+           var x = tp.Item1;
+           var y = tp.Item2;
+            for (int i = 0; i < 3; i++)
+            {
+                var indexX = ListItems.IndexOf(ListItems[i]);
+
+                for (int j = 0; j < 3; j++)
+                {
+                    var indexY = ListItems[i].IndexOf(ListItems[i][j]);
+                    if (x == indexX || y == indexY)
+                    {
+                        
+                        ListItems[i][j].Text=str;
+                    }
+                }
+            }
         }
+
+
     }
 
     
