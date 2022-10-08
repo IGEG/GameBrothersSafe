@@ -18,10 +18,8 @@ namespace GameBrothersSafe.ViewModels
             Capasity = 3;
             ListItems = new List<List<ItemViewModel>>();
             LoadRandomItems(ListItems, Capasity);
-
             OnPropertyChanged(nameof(ListItems));
             ClickCommand = new RelayCommand<ItemViewModel>(Click);
-
         }
         public int Capasity { get; private set; }
 
@@ -35,7 +33,7 @@ namespace GameBrothersSafe.ViewModels
         {
            var str = ChangeTextInButton(item);
            var tp = ListItems.CoordinatesOf<ItemViewModel>(item);
-           ChangeTextInAllButton(tp.Item1, tp.Item2, Capasity, str);
+           ChangeTextInAllButton(tp.Item1, tp.Item2, Capasity);
            var check = CheckFinish(item, Capasity, ListItems);
            if (check)
            {
@@ -75,7 +73,7 @@ namespace GameBrothersSafe.ViewModels
             item.Text = str;
             return str;
         }
-        private void ChangeTextInAllButton(int x, int y, int Capasity, string str )
+        private void ChangeTextInAllButton(int x, int y, int Capasity)
         {
 
             for (int i = 0; i < Capasity; i++)
@@ -105,18 +103,12 @@ namespace GameBrothersSafe.ViewModels
                 {
                     if (str != ListItems[i][j].Text)
                         return false;
-                    else continue;
                    
                 }
-
             }
             return true;
-
         }
 
-
-
     }
-
-    
+ 
 }

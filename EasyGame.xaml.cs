@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace GameBrothersSafe
 {
-    /// <summary>
-    /// Interaction logic for EasyGame.xaml
-    /// </summary>
     public partial class EasyGame : Window
     {
         public EasyGame()

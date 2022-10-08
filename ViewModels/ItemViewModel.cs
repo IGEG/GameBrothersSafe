@@ -12,7 +12,7 @@ namespace GameBrothersSafe.ViewModels
         public ItemViewModel(string str)
         {
             Text = str;
-
+            Guid = Guid.NewGuid();
         }
 
         private string _text;
@@ -21,22 +21,25 @@ namespace GameBrothersSafe.ViewModels
             get => _text;
             set=>SetProperty(ref _text, value);
         }
+        private Guid Guid { get; set; }
 
-        //public override int GetHashCode()
-        //{
-        //    return Text.GetHashCode();
-        //}
-        //public override bool Equals(object? obj)
-        //{
-        //    if (obj is ItemViewModel)
-        //    {
-        //        ItemViewModel item = (ItemViewModel)obj;
-        //        return item._text == _text;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
+
+
+        public override int GetHashCode()
+        {
+            return Guid.GetHashCode();
+        }
+        public override bool Equals(object? obj)
+        {
+            if (obj is ItemViewModel)
+            {
+                ItemViewModel item = (ItemViewModel)obj;
+                return item.Guid == Guid;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
