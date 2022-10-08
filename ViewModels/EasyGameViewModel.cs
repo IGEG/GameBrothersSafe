@@ -20,6 +20,7 @@ namespace GameBrothersSafe.ViewModels
             LoadRandomItems(ListItems, Capasity);
             OnPropertyChanged(nameof(ListItems));
             ClickCommand = new RelayCommand<ItemViewModel>(Click);
+            CloseCommand = new RelayCommand<Window>(this.Close);
         }
         public int Capasity { get; private set; }
 
@@ -29,15 +30,27 @@ namespace GameBrothersSafe.ViewModels
         private ICommand _clickCommand;
         public ICommand ClickCommand { get =>_clickCommand; set =>SetProperty(ref _clickCommand, value);}
 
+        public ICommand CloseCommand { get; private set; }
+
+        private void Close(Window window)
+        {
+            if (window != null)
+            {
+                window.Close();
+            }
+        }
+
         private void Click(ItemViewModel item)
         {
-           var str = ChangeTextInButton(item);
+
            var tp = ListItems.CoordinatesOf<ItemViewModel>(item);
            ChangeTextInAllButton(tp.Item1, tp.Item2, Capasity);
            var check = CheckFinish(item, Capasity, ListItems);
            if (check)
            {
-                MessageBox.Show("finish");
+                FinishWindow finish = new FinishWindow();
+                finish.Show();
+                this.Close(App.Current.Windows[0]);
            }
         }
 
