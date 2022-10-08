@@ -5,13 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GameBrothersSafe"
         mc:Ignorable="d"
-        Title="EasyGame" Height="250" Width="250"
+        Title="EasyGame" Height="400" Width="390"
         x:Name="easyGameWindow">
     <Window.Resources>
         <DataTemplate x:Key="DataTemplate_Level2">
-            <Button Content="{Binding Text}" Height="50" Width="50" Margin="4,4,4,4"
+            <Button Height="100" Width="100" Margin="10,10,10,10"
                     Command="{Binding DataContext.ClickCommand, RelativeSource={RelativeSource AncestorType=Window, Mode=FindAncestor}}"
                     CommandParameter="{Binding }">
+                <Button.Content>
+                    <Image Source="{Binding Text}"/>
+                </Button.Content>
             </Button>
         </DataTemplate>
         <DataTemplate x:Key="DataTemplate_Level1">

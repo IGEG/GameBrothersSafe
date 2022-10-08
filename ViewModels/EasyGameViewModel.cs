@@ -44,7 +44,7 @@ namespace GameBrothersSafe.ViewModels
         private void LoadRandomItems(List<List<ItemViewModel>> items, int num)
         {
             var rand = new Random();
-            string[] handle = { "|", "--" };
+            string[] handle = { "Img/handle.png", "Img/verticalhandle.png" };
 
             for (int i = 0; i < num; i++)
             {
@@ -62,13 +62,13 @@ namespace GameBrothersSafe.ViewModels
         private string ChangeTextInButton(ItemViewModel item)
         {
             var str = item.Text;
-            if (str == "|")
+            if (str == "Img/handle.png")
             {
-                str = "--";
+                str = "Img/verticalhandle.png";
             }
             else
             {
-                str = "|";
+                str = "Img/handle.png";
             }
             item.Text = str;
             return str;

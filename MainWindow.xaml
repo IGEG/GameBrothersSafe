@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GameBrothersSafe"
         mc:Ignorable="d"
-        Title="Игра Братьев Пилотов" Height="600" Width="450">
+        Title="Игра Сейф Братьев Пилотов" Height="600" Width="450">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="175*"/>
@@ -13,15 +13,15 @@
             <RowDefinition Height="72*"/>
             <RowDefinition Height="244*"/>
         </Grid.RowDefinitions>
-        <Image HorizontalAlignment="Left" Height="100" Margin="175,40,175,0" VerticalAlignment="Top" Width="100" Source="Img/Start.jpg">
+        <Image HorizontalAlignment="Center" Height="104" Margin="0,40,0,0" VerticalAlignment="Top" Width="278" Source="Img/Start.jpg" IsManipulationEnabled="True">
             <Image.BindingGroup>
                 <BindingGroup/>
             </Image.BindingGroup>
         </Image>
-        <Label  Content="Игра Сейф Братьев Пилотов"  Margin="50,0,40,0" Grid.Row="1" VerticalAlignment="Center" FontSize="24" Height="34" Width="350" FontWeight="Bold" FontFamily="AR CENA"/>
+        <Label  Content="Сейф Братьев Пилотов"  Margin="75,0,75,0" Grid.Row="1" VerticalAlignment="Center" FontSize="24" Height="34" FontWeight="Bold" FontFamily="AR CENA"/>
         <Label  Content="Выбор сложности" Margin="110,0,86,0" Grid.Row="2" VerticalAlignment="Center" FontSize="24" Height="34" FontWeight="Bold" FontFamily="AR CENA"/>
-        <Button Content="Легкий" HorizontalAlignment="Left" Margin="170,10,0,0" Grid.Row="3" VerticalAlignment="Top" Click="Easy_Button_Click" Width="110" Height="40" FontSize="14"/>
-        <Button Content="Средний" HorizontalAlignment="Left" Margin="170,80,0,0" Grid.Row="3" VerticalAlignment="Top" Click="Average_Button_Click" Width="110" Height="40" FontSize="14"/>
-        <Button Content="Сложный" HorizontalAlignment="Left" Margin="170,150,0,0" Grid.Row="3" VerticalAlignment="Top" Click="Difficult_Button_Click" Width="110" Height="40" FontSize="14"/>
+        <Button Content="Легкий" HorizontalAlignment="Left" Margin="165,10,0,0" Grid.Row="3" VerticalAlignment="Top" Click="Easy_Button_Click" Width="110" Height="40" FontSize="14"/>
+        <Button Content="Средний" HorizontalAlignment="Left" Margin="165,80,0,0" Grid.Row="3" VerticalAlignment="Top" Click="Average_Button_Click" Width="110" Height="40" FontSize="14"/>
+        <Button Content="Сложный" HorizontalAlignment="Left" Margin="165,150,0,0" Grid.Row="3" VerticalAlignment="Top" Click="Difficult_Button_Click" Width="110" Height="40" FontSize="14"/>
     </Grid>
 </Window>

@@ -8,7 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Img\handle.png" />
     <None Remove="Img\Start.jpg" />
+    <None Remove="Img\verticalhandle.png" />
+    <None Remove="Start.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -16,9 +19,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Img\handle.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Img\Start.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Img\verticalhandle.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Start.png" />
   </ItemGroup>
 
 </Project>
