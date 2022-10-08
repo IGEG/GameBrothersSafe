@@ -1,12 +1,12 @@
-﻿<Window x:Class="GameBrothersSafe.EasyGame"
+﻿<Window x:Class="GameBrothersSafe.DifficultGame"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GameBrothersSafe"
         mc:Ignorable="d"
-        Title="Легкий уровень сложности" Height="400" Width="390"
-        x:Name="easyGameWindow">
+        Title="Высокий уровень сложности" Height="640" Width="635"
+        x:Name="difficultGameWindow">
     <Window.Resources>
         <DataTemplate x:Key="DataTemplate_Level2">
             <Button Height="100" Width="100" Margin="10,10,10,10"

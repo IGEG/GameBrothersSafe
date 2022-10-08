@@ -27,12 +27,16 @@ namespace GameBrothersSafe
 
         private void Difficult_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            DifficultGame difficultGame = new DifficultGame();
+            difficultGame.Show();
+            this.Close();
         }
 
         private void Average_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            AverageGame averageGame = new AverageGame();
+            averageGame.Show();
+            this.Close();
         }
 
         private void Easy_Button_Click(object sender, RoutedEventArgs e)

@@ -4,7 +4,6 @@ using GameBrothersSafe.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,24 +11,24 @@ using System.Windows.Input;
 
 namespace GameBrothersSafe.ViewModels
 {
-    internal class EasyGameViewModel : ObservableObject, IGameModel
+    internal class DifficultGameViewModel : ObservableObject, IGameModel
     {
-        public EasyGameViewModel()
+        public DifficultGameViewModel()
         {
-            Capasity = 3;
+            Capasity = 5;
             ListItems = new List<List<ItemViewModel>>();
             LoadRandomItems(ListItems, Capasity);
             OnPropertyChanged(nameof(ListItems));
             ClickCommand = new RelayCommand<ItemViewModel>(Click);
             CloseCommand = new RelayCommand<Window>(this.Close);
         }
-        public int Capasity { get;  set; }
+        public int Capasity { get; set; }
 
         private List<List<ItemViewModel>> _listItems;
-        public List<List<ItemViewModel>> ListItems { get=> _listItems; set=> SetProperty(ref _listItems, value);}
+        public List<List<ItemViewModel>> ListItems { get => _listItems; set => SetProperty(ref _listItems, value); }
 
         private ICommand _clickCommand;
-        public ICommand ClickCommand { get =>_clickCommand; set =>SetProperty(ref _clickCommand, value);}
+        public ICommand ClickCommand { get => _clickCommand; set => SetProperty(ref _clickCommand, value); }
 
         public ICommand CloseCommand { get; private set; }
 
@@ -44,15 +43,15 @@ namespace GameBrothersSafe.ViewModels
         private void Click(ItemViewModel item)
         {
 
-           var tp = ListItems.CoordinatesOf<ItemViewModel>(item);
-           ChangeTextInAllButton(tp.Item1, tp.Item2, Capasity);
-           var check = CheckFinish(item, Capasity, ListItems);
-           if (check)
-           {
+            var tp = ListItems.CoordinatesOf<ItemViewModel>(item);
+            ChangeTextInAllButton(tp.Item1, tp.Item2, Capasity);
+            var check = CheckFinish(item, Capasity, ListItems);
+            if (check)
+            {
                 FinishWindow finish = new FinishWindow();
                 finish.Show();
                 this.Close(App.Current.Windows[0]);
-           }
+            }
         }
 
         public void LoadRandomItems(List<List<ItemViewModel>> ListItems, int Capasity)
@@ -70,7 +69,6 @@ namespace GameBrothersSafe.ViewModels
                     ListItems[i].Add(new ItemViewModel(handle[index]));
                 }
             }
-
         }
 
         public string ChangeTextInButton(ItemViewModel item)
@@ -87,9 +85,9 @@ namespace GameBrothersSafe.ViewModels
             item.Text = str;
             return str;
         }
+
         public void ChangeTextInAllButton(int x, int y, int Capasity)
         {
-
             for (int i = 0; i < Capasity; i++)
             {
                 var indexX = ListItems.IndexOf(ListItems[i]);
@@ -104,10 +102,9 @@ namespace GameBrothersSafe.ViewModels
 
                 }
             }
-
         }
 
-        public bool CheckFinish(ItemViewModel item,int Capasity, List<List<ItemViewModel>> ListItems)
+        public bool CheckFinish(ItemViewModel item, int Capasity, List<List<ItemViewModel>> ListItems)
         {
             string str = item.Text;
 
@@ -117,12 +114,12 @@ namespace GameBrothersSafe.ViewModels
                 {
                     if (str != ListItems[i][j].Text)
                         return false;
-                   
+
                 }
             }
             return true;
         }
 
+       
     }
- 
 }
